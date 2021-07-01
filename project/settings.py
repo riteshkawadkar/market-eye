@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-4(cw#+80i#v((g+ovr2qdq1vwc-a6v8)e%ax4)i_gkpcxo4c@0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['market-eye.herokuapp.com', '127.0.0.1']
 
@@ -132,10 +132,19 @@ STATIC_URL = '/static/'
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static/css'),
+    os.path.join(BASE_DIR, 'static/img'),
+    os.path.join(BASE_DIR, 'static/js'),
+    os.path.join(BASE_DIR, 'static/lib'),
+    os.path.join(BASE_DIR, 'static/scss'),
 )
 
 # The absolute path to the directory where collectstatic will collect static files for deployment.
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/img/'
